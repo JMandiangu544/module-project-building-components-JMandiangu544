@@ -3,18 +3,29 @@ function moduleProject3() {
   // 👉 TASK 1 - Write a `buildNav` component that returns a nav
 
   function buildNav(links) {
-    //  ✨ do your magic here
-    return document.createElement('nav')
+    const navElement = document.createElement('nav');
+  
+    links.forEach(link => {
+      const { href, textContent, title } = link;
+      const anchorElement = document.createElement('a');
+      anchorElement.href = href;
+      anchorElement.textContent = textContent;
+      anchorElement.title = title;
+      navElement.appendChild(anchorElement);
+    });
+  
+    return navElement;
   }
-
-  // ❗ DOM creation using your `buildNav` component (do not change):
+  
+  // DOM creation using your `buildNav` component
   document.querySelector('header').appendChild(buildNav([
     { href: 'https://www.example.com', textContent: 'Home', title: 'Go to the home page' },
     { href: 'https://www.example.com/about', textContent: 'About', title: 'Learn more about our company' },
     { href: 'https://www.example.com/services', textContent: 'Services', title: 'View our available services' },
     { href: 'https://www.example.com/blog', textContent: 'Blog', title: 'Read our latest blog posts' },
     { href: 'https://www.example.com/contact', textContent: 'Contact', title: 'Get in touch with us' },
-  ]))
+  ]));
+  
 
   // 👉 TASK 2A - Write a `buildLearnerCard` component that returns a card
 
