@@ -30,8 +30,27 @@ function moduleProject3() {
   // 👉 TASK 2A - Write a `buildLearnerCard` component that returns a card
 
   function buildLearnerCard(learner, languages) {
-    //  ✨ do your magic here
+    const card = document.createElement('div');
+    card.classList.add('learner-card');
+  
+    // Create elements for learner information
+    const nameElement = document.createElement('h2');
+    nameElement.textContent = learner.name;
+  
+    const ageElement = document.createElement('p');
+    ageElement.textContent = `Age: ${learner.age}`;
+  
+    const languagesElement = document.createElement('p');
+    languagesElement.textContent = `Languages: ${languages.join(', ')}`;
+  
+    // Append learner information elements to the card
+    card.appendChild(nameElement);
+    card.appendChild(ageElement);
+    card.appendChild(languagesElement);
+  
+    return card;
   }
+  
 
   {
     // 👉 TASK 2B - Use the two variables below to make learner Cards, and put them in the DOM
