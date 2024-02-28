@@ -69,7 +69,42 @@ function moduleProject3() {
       { id: 41, fullName: 'Sabah Beydoun', dateOfBirth: '1988-03-25', favLanguage: 91 },
       { id: 17, fullName: 'Daniel Castillo', dateOfBirth: '1995-11-05', favLanguage: 12 }
     ]
-    //  ✨ do your magic here
+    function findLanguageById(languageId) {
+      return languages.find(lang => lang.id === languageId);
+    }
+    
+    // Function to build a learner card
+    function buildLearnerCard(learner, language) {
+      const card = document.createElement('div');
+      card.classList.add('learner-card');
+    
+      // Create elements for learner information
+      const nameElement = document.createElement('h2');
+      nameElement.textContent = learner.fullName;
+    
+      const dobElement = document.createElement('p');
+      dobElement.textContent = `Date of Birth: ${learner.dateOfBirth}`;
+    
+      const languageElement = document.createElement('p');
+      languageElement.textContent = `Favorite Language: ${language.name}`;
+    
+      // Append learner information elements to the card
+      card.appendChild(nameElement);
+      card.appendChild(dobElement);
+      card.appendChild(languageElement);
+    
+      return card;
+    }
+    
+    // Get the container element in the DOM
+    const container = document.getElementById('learner-container');
+    
+    // Iterate over learners and create cards
+    learners.forEach(learner => {
+      const language = findLanguageById(learner.favLanguage);
+      const learnerCard = buildLearnerCard(learner, language);
+      container.appendChild(learnerCard); // Append card to the container
+    });
   }
 
   // 👉 TASK 3 - Write a `buildFooter` component that returns a footer
